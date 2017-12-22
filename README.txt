@@ -1,3 +1,6 @@
+Another Test Site from Colin
+
+One more to practice building Blocks and Modules 
 
 CONTENTS OF THIS FILE
 ---------------------
