@@ -1,0 +1,39 @@
+<?php
+
+
+// Implements hook_menu();
+
+function menu_magic_menu() {
+  $items = array();
+
+    $items['magic'] = array(
+      'title' => "A little Magic",
+      'page callback' => 'menu_magic_basic',
+      'access arguements' => array('access content')
+  );
+  return $items
+}
+
+function menu_magic_basic() {
+  $content = array();
+
+  // This is some very simple page element. It will appear on the page,
+  // but other modules can't customize it and the themes can't override it's markup.
+
+  $content['raw_markup'] = array(
+    '#type' => 'markup',
+    '#markup' => "<p>Here's an example of some text to add in to the demo page!</p>",
+  );
+  return $content;
+}
+
+// Permission administration for magic module
+
+function menu_magic_permission() {
+  return array(
+    'administer menu magic module' => array(
+      'title' => t("Administer menu magic module"),
+      'description' => t('Perform administration for the Menu Magic Module.'),
+    ),
+  );
+}
