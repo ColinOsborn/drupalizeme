@@ -1,0 +1,34 @@
+<?php
+
+// Implements hook_menu();
+
+function formula_menu_menu() {
+  $items = array();
+    $items['formula'] = array(
+      'title' => "Formula 1 Menu",
+      'page callback' => 'formula_1_menu',
+      'access arguements' => array('access content')
+    );
+  return $items;
+}
+
+
+function formula_menu_basic() {
+  $content = array();
+  $content['raw_markup'] = array(
+    '#type' => 'markup',
+    '#markup' => "<p>Here's an example how to implement some text into the Demo Page for Formula 1 learning.</p>",
+  );
+  return $content;
+}
+
+// Permission administration for Formula 1 Module
+
+function formula_menu_permission() {
+  return array(
+    'administer formula 1 menu module' => array(
+      'title' => t('Administer Formula 1 menu module'),
+      'description' => t('Perforom adminisitration for the Formula 1 Module.'),
+    ),
+  );
+}

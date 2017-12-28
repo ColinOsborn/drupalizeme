@@ -11,7 +11,7 @@ function menu_magic_menu() {
       'page callback' => 'menu_magic_basic',
       'access arguements' => array('access content')
   );
-  return $items
+  return $items;
 }
 
 function menu_magic_basic() {
