@@ -32,3 +32,5 @@ function formula_menu_permission() {
     ),
   );
 }
+
+// Implements the new hook_permission
