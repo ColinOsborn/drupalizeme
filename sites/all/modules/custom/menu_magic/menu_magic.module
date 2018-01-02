@@ -3,34 +3,80 @@
 
 // Implements hook_menu();
 
+/**
+ * Implements hook_menu().
+ */
 function menu_magic_menu() {
   $items = array();
 
   $items['magic'] = array(
-    'title' => "A little Magic",
+    'title' => 'A little magic',
     'page callback' => 'menu_magic_basic',
-    'access arguements' => array('access content'),
+    'access arguments' => array('access content'),
   );
+
   $items['magic/%'] = array(
-    'title' => "A little Magic",
+    'title' => 'Even more magical',
     'page callback' => 'menu_magic_extra',
-    'page arguements' => array(1),
-    'access arguements' => array('access content'),
+    'page arguments' => array(1),
+    'access arguments' => array('access content'),
     'file' => 'menu_magic.extra.inc',
   );
+
   $items['user/%/magic'] = array(
     'title' => 'Magic',
     'description' => 'Magical magic for users',
     'page callback' => 'menu_magic_user_tab',
-    'page arguements' => array(1),
+    'page arguments' => array(1),
     'access callback' => 'user_access',
-    'access arguemnts' => array('administer users'),
-    'file' => 'menu_magic.user.inc'
+    'access arguments' => array('administer users'),
+    'file' => 'menu_magic.user.inc',
     'type' => MENU_LOCAL_TASK,
+  );
+
+  // node_load(%)
+  $items['node/%node/magic'] = array(
+    'title' => 'Magic',
+    'description' => 'Do amazing and magical things',
+    'page callback' => 'menu_magic_node_context',
+    'page arguments' => array(1),
+    'access arguments' => array('access content'),
+    'file' => 'menu_magic.context.inc',
+    'type' => MENU_LOCAL_TASK,
+    'context' => MENU_CONTEXT_PAGE | MENU_CONTEXT_INLINE,
   );
 
   return $items;
 }
+
+// function menu_magic_menu() {
+//   $items = array();
+//
+//   $items['magic'] = array(
+//     'title' => "A little Magic",
+//     'page callback' => 'menu_magic_basic',
+//     'access arguements' => array('access content'),
+//   );
+//   $items['magic/%'] = array(
+//     'title' => "A little Magic",
+//     'page callback' => 'menu_magic_extra',
+//     'page arguements' => array(1),
+//     'access arguements' => array('access content'),
+//     'file' => 'menu_magic.extra.inc',
+//   );
+//   $items['user/%/magic'] = array(
+//     'title' => 'Magic',
+//     'description' => 'Magical magic for users',
+//     'page callback' => 'menu_magic_user_tab',
+//     'page arguements' => array(1),
+//     'access callback' => 'user_access',
+//     'access arguemnts' => array('administer users'),
+//     'file' => 'menu_magic.user.inc'
+//     'type' => MENU_LOCAL_TASK,
+//   );
+//
+//   return $items;
+// }
 
 function menu_magic_basic() {
   $content = array();
