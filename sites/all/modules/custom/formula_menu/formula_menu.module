@@ -33,4 +33,18 @@ function formula_menu_permission() {
   );
 }
 
+function formula_node_view($node, $view_mode, $langcode) {
+  $node->content['formula_field'] = array(
+    '#type' => 'markup',
+    '#markup' => '<p>'.t('Formula 1 Constructors.').'</p>',
+    '#weight' => -10,
+  );
+  $node->content['formula_list'] = array(
+     '#items' => array('Ferrari', 'Mercedes', 'Lotus', 'Renault', 'Red Bull', 'McLaren', 'Haas', 'Sauber'),
+     '#theme' => 'item_list',
+     '#weight' => -9,
+  );
+  krumo($node);
+}
+
 // Implements the new hook_permission
