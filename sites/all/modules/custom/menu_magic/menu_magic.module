@@ -6,11 +6,19 @@
 function menu_magic_menu() {
   $items = array();
 
-    $items['magic'] = array(
-      'title' => "A little Magic",
-      'page callback' => 'menu_magic_basic',
-      'access arguements' => array('access content')
+  $items['magic'] = array(
+    'title' => "A little Magic",
+    'page callback' => 'menu_magic_basic',
+    'access arguements' => array('access content'),
   );
+  $items['magic/%'] = array(
+    'title' => "A little Magic",
+    'page callback' => 'menu_magic_extra',
+    'page arguements' => array(1),
+    'access arguements' => array('access content'),
+    'file' => 'menu_magic.extra.inc',
+  );
+
   return $items;
 }
 
