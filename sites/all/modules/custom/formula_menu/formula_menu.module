@@ -28,7 +28,7 @@ function formula_menu_permission() {
   return array(
     'administer formula 1 menu module' => array(
       'title' => t('Administer Formula 1 menu module'),
-      'description' => t('Perforom adminisitration for the Formula 1 Module.'),
+      'description' => t('Perform adminisitration for the Formula 1 Module.'),
     ),
   );
 }
