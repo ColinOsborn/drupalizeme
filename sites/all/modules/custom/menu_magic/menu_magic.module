@@ -8,7 +8,7 @@ function menu_magic_menu() {
   $items = array();
 
   $items['magic'] = array(
-    'title' => 'A little magic',
+    'title' => 'Magical F1 Cars',
     'page callback' => 'menu_magic_basic',
     'access arguments' => array('access content'),
   );
@@ -105,7 +105,7 @@ function menu_magic_basic() {
   // but other modules can't customize it and themes can't override its markup.
   $content['raw_markup'] = array(
     '#type' => 'markup',
-    '#markup' => 'Truly, this is magical!',
+    '#markup' => 'Kimi Raikkonen!',
     '#prefix' => '<p>',
     '#suffix' => '</p>',
   );
