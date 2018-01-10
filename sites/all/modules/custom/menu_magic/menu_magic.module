@@ -100,7 +100,6 @@ function menu_magic_permission() {
 
 function menu_magic_basic() {
   $content = array();
-
   // This is a very, very simple page element. It will appear on the page,
   // but other modules can't customize it and themes can't override its markup.
   $content['raw_markup'] = array(
@@ -118,7 +117,7 @@ function menu_magic_basic() {
   $content['themed_data'] = array(
     '#type' => 'markup',
     '#markup' => theme('image', $variables),
-    '#prefix' => '<div class="menu-magic-image">',
+    '#prefix' => '<div class="menu-magic-kimi-raikkonen-image">',
     '#suffix' => '</div>',
     '#attached' => array(
       'css' => array(
@@ -133,7 +132,8 @@ function menu_magic_basic() {
     '#items' => array(
       t("2007 World Champion"),
       t("6 Race Victories"),
-      t("10 Fastest Laps"),
+      t("6 Fastest Laps"),
+      t("3 Pole Positions"),
       t('The current time is %time.', array('%time' => date('r'))),
     ),
     '#cache' => array(
