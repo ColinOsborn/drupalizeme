@@ -49,21 +49,43 @@ function menu_magic_menu() {
 
 // content render function
 
-function menu_magic_basic() {
-  $content = array();
-  // This is some very simple page element. It will appear on the page,
-  // but other modules can't customize it and the themes can't override it's markup.
-
-  // any time you see an render array without a # or hash, that is considered an element.
-  //
-  $content['raw_markup'] = array(
-    '#type' => 'markup',
-    '#markup' => "Here's an example of some text to add in to the demo page!",
-    '#prefix' => "<p>",
-    '#suffix' -> '</p>'
-  );
-  return $content;
-}
+// function menu_magic_basic() {
+//   $content = array();
+//   // This is some very simple page element. It will appear on the page,
+//   // but other modules can't customize it and the themes can't override it's markup.
+//
+//   // any time you see an render array without a # or hash, that is considered an element.
+//   //
+//   $content['raw_markup'] = array(
+//     '#type' => 'markup',
+//     '#markup' => "Here's an example of some text to add in to the demo page!",
+//     '#prefix' => "<p>",
+//     '#suffix' -> '</p>',
+//   );
+//
+//   $varibales = array(
+//     'path' => 'https://upload.wikimedia.org/wikipedia/commons/d/de/Kimi_Raikkonen_2007_Malaysia.jpg',
+//     'alt' => t('Ferrari F2007 with Kimi Raikkonen behind the wheel, now thats magical'),
+//     'title' => t('Ferrari F2007 with Kimi Raikkonen photo title'),
+//   );
+//
+//   $content['themed_data'] = array(
+//     '#type' => 'markup',
+//     '#markup' => theme('image', $variables),
+//   );
+//
+//   $content['renderable_element'] = array(
+//     '#theme' => 'item_list',
+//     '#title' => t('Kimi Raikkonen Results 2007'),
+//     '#items' => array(
+//       t("2007 World Champion"),
+//       t("6 Race Victories"),
+//       t("10 Fastest Laps"),
+//     ),
+//   );
+//
+//   return $content;
+// }
 
 // Permission administration for magic module
 
@@ -74,4 +96,53 @@ function menu_magic_permission() {
       'description' => t('Perform administration for the Menu Magic Module.'),
     ),
   );
+}
+
+function menu_magic_basic() {
+  $content = array();
+
+  // This is a very, very simple page element. It will appear on the page,
+  // but other modules can't customize it and themes can't override its markup.
+  $content['raw_markup'] = array(
+    '#type' => 'markup',
+    '#markup' => 'Truly, this is magical!',
+    '#prefix' => '<p>',
+    '#suffix' => '</p>',
+  );
+
+  $variables = array(
+    'path' => 'https://upload.wikimedia.org/wikipedia/commons/d/de/Kimi_Raikkonen_2007_Malaysia.jpg',
+    'alt' => t('Kimi Raikkonen behind the wheel of the Ferrari F2007, something that was truly magical.'),
+    'title' => t('Kimi Raikkonen en route to winning the 2007 Malaysia GP.'),
+  );
+  $content['themed_data'] = array(
+    '#type' => 'markup',
+    '#markup' => theme('image', $variables),
+    '#prefix' => '<div class="menu-magic-image">',
+    '#suffix' => '</div>',
+    '#attached' => array(
+      'css' => array(
+        drupal_get_path('module', 'menu_magic') . '/menu_magic.css',
+      ),
+    ),
+  );
+
+  $content['renderable_element'] = array(
+    '#theme' => 'item_list',
+    '#title' => t('Kimi Raikkonen 2007 Season Highlights'),
+    '#items' => array(
+      t("2007 World Champion"),
+      t("6 Race Victories"),
+      t("10 Fastest Laps"),
+      t('The current time is %time.', array('%time' => date('r'))),
+    ),
+    '#cache' => array(
+      'keys' => array('menu_magic', 'renderable_element'), // menu_magic:renderable_element
+      'bin' => 'cache',
+      'expire' => time() + 30,
+      'granularity' => DRUPAL_CACHE_PER_PAGE,
+    ),
+  );
+
+  return $content;
 }
