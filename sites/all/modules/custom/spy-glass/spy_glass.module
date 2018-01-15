@@ -53,7 +53,7 @@
     $variables['module_name'] = t('Spy Glass');
   }
 
-  /*
+  /* -- double check to see why this is commented out
   function theme_spy_glass_item($variables) {
     $output = '<p>';
     $output .= '<strong>' . check_plain($variables['title']) . '</strong><br/>';
@@ -61,6 +61,7 @@
     $output .= '</p>';
     return $output;
   }
+  Pertains to the themeing of this page view etc
   */
 
   /**
