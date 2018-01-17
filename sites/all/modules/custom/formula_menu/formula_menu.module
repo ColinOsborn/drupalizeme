@@ -48,3 +48,42 @@ function formula_node_view($node, $view_mode, $langcode) {
 }
 
 // Implements the new hook_permission
+
+// be sure to edit this code before activating 
+$variables = array(
+  'path' => 'https://upload.wikimedia.org/wikipedia/commons/d/de/Kimi_Raikkonen_2007_Malaysia.jpg',
+  'alt' => t('Kimi Raikkonen behind the wheel of the Ferrari F2007, something that was truly magical.'),
+  'title' => t('Kimi Raikkonen en route to winning the 2007 Malaysia GP.'),
+);
+$content['themed_data'] = array(
+  '#type' => 'markup',
+  '#markup' => theme('image', $variables),
+  '#prefix' => '<div class="menu-magic-kimi-raikkonen-image">',
+  '#suffix' => '</div>',
+  '#attached' => array(
+    'css' => array(
+      drupal_get_path('module', 'menu_magic') . '/menu_magic.css',
+    ),
+  ),
+);
+
+$content['renderable_element'] = array(
+  '#theme' => 'item_list',
+  '#title' => t('Kimi Raikkonen 2007 Season Highlights'),
+  '#items' => array(
+    t("2007 World Champion"),
+    t("6 Race Victories"),
+    t("6 Fastest Laps"),
+    t("3 Pole Positions"),
+    t('The current time is %time.', array('%time' => date('r'))),
+  ),
+  '#cache' => array(
+    'keys' => array('menu_magic', 'renderable_element'), // menu_magic:renderable_element
+    'bin' => 'cache',
+    'expire' => time() + 30,
+    'granularity' => DRUPAL_CACHE_PER_PAGE,
+  ),
+);
+
+return $content;
+}
